@@ -22,14 +22,14 @@
 
     .clock {
       background: linear-gradient(135deg, rgb(7, 33, 58) 15%, rgb(60, 31, 3) 100%);
-      box-shadow: 2px 2px 8px  black, 2px 4px 4px rgb(7, 33, 58);
-
+      box-shadow: 2px 2px 8px black, 2px 4px 4px rgb(7, 33, 58);
+      animation: glow 1s ease-in-out infinite alternate;
       top: 50%;
       left: 50%;
       height: auto;
-      width: 550px;
+      width: 610px;
       position: absolute;
-      transform: translate(-50%, -75%);
+      transform: translate(-50%, -50%);
       border: 1px solid pink;
       border-radius: 24px;
     }
@@ -71,14 +71,14 @@
       padding: 0 30px 0 0;
       margin: 0 0 0 20px;
       border-radius: 16px;
-      
+
     }
-    
+
     .s-zone-p {
       /* border: 1px solid green; */
       padding-right: 20px;
     }
-    
+
     .zone {
       /* border: 1px solid gold; */
       text-shadow: 1px 1px 4px black, 0 8px 20px green, 0 0 4px darkgreen;
@@ -86,16 +86,58 @@
       margin: 10px 10px 0 10px;
       font-size: 1.3rem;
     }
-    
+
     .sec {
-      /* border: 1px solid blue; */
+      border: 1px solid lime;
+      border-radius: 5px;
       text-shadow: 1px 1px 4px black, 0 8px 20px green, 0 0 4px darkgreen;
       height: auto;
+      box-shadow: 0 0 8px black, 0 0 8px green;
+      background: linear-gradient(135deg, rgb(95, 53, 4) 15%, rgb(44, 22, 2) 100%);
       /* width: 100%; */
-      padding: 0 10px 10px 10px;
+      /* padding: 0 10px 10px 10px; */
       margin: 0;
       font-size: 2rem;
       text-align: center;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 2px 2px 8px black, 2px 4px 4px rgb(7, 33, 58);
+      }
+
+      to {
+         box-shadow: 2px 2px 24px black, 2px 4px 24px rgb(7, 33, 58);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .clock {
+        width: 90%;
+        padding: 20px 0;
+      }
+
+      .h-m {
+        font-size: 5rem;
+        padding: 0 10px 0 0;
+        margin: 0 0 0 10px;
+      }
+
+      .date {
+        font-size: 1.8rem;
+        padding-right: 10px;
+      }
+
+      .zone {
+        font-size: 1rem;
+        padding: 8px;
+        margin: 6px 6px 0 6px;
+      }
+
+      .sec {
+        font-size: 1.5rem;
+        padding: 0 6px 6px 6px;
+      }
     }
   </style>
 </head>
