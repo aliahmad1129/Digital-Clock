@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      height: 100vh;
+      background: linear-gradient(135deg, rgb(10, 44, 78) 15%, rgb(114, 59, 4) 100%);
+    }
+
+    .clock {
+      background: linear-gradient(135deg, rgb(7, 33, 58) 15%, rgb(60, 31, 3) 100%);
+      box-shadow: 2px 2px 8px  black, 2px 4px 4px rgb(7, 33, 58);
+
+      top: 50%;
+      left: 50%;
+      height: auto;
+      width: 550px;
+      position: absolute;
+      transform: translate(-50%, -75%);
+      border: 1px solid pink;
+      border-radius: 24px;
+    }
+
+    .date {
+      height: auto;
+      width: 100%;
+      /* border: 1px solid palegreen; */
+      font-family: "Orbitron", sans-serif;
+      font-weight: 300;
+      color: rgb(255, 64, 64);
+      font-size: 2.5rem;
+      padding-right: 20px;
+      text-align: right;
+      word-spacing: 15px;
+
+    }
+
+    .date-p {
+      border-top: 1px solid pink;
+      padding-right: 20px;
+    }
+
+    .time {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      color: #0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .h-m {
+      /* border: 1px solid red; */
+      font-size: 8rem;
+      font-weight: 700;
+      color: lime;
+      text-shadow: 1px 1px 4px black, 0 0 24px green, 0 0 4px darkgreen;
+      padding: 0 30px 0 0;
+      margin: 0 0 0 20px;
+      border-radius: 16px;
+      
+    }
+    
+    .s-zone-p {
+      /* border: 1px solid green; */
+      padding-right: 20px;
+    }
+    
+    .zone {
+      /* border: 1px solid gold; */
+      text-shadow: 1px 1px 4px black, 0 8px 20px green, 0 0 4px darkgreen;
+      padding: 12px;
+      margin: 10px 10px 0 10px;
+      font-size: 1.3rem;
+    }
+    
+    .sec {
+      /* border: 1px solid blue; */
+      text-shadow: 1px 1px 4px black, 0 8px 20px green, 0 0 4px darkgreen;
+      height: auto;
+      /* width: 100%; */
+      padding: 0 10px 10px 10px;
+      margin: 0;
+      font-size: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="clock" id="clock">
+      <div class="time">
+        <p class="h-m"></p>
+        <div class="s-zone-p">
+          <p class="zone"></p>
+          <p class="sec"></p>
+        </div>
+      </div>
+      <div class="date-p">
+        <div class="date"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function updateTime() {
+      let t = new Date();
+
+      let hour = t.getHours();
+      let zone = hour < 12 ? ' AM' : ' PM';
+      if (hour === 0) hour = 12;
+      else if (hour > 12) hour = hour - 12;
+      if (hour < 10) hour = '0' + hour;
+
+      let minute = t.getMinutes();
+      if (minute < 10) minute = '0' + minute;
+
+      let second = t.getSeconds();
+      if (second < 10) second = '0' + second;
+
+      let time = hour + ":" + minute;
+
+      let day = t.getDate();
+      let month = t.getMonth() + 1;
+      let year = t.getFullYear();
+
+      let date = day + "   " + month + "   " + year;
+
+      document.querySelector('.h-m').textContent = time;
+      document.querySelector('.zone').textContent = zone;
+      document.querySelector('.date').textContent = date;
+      document.querySelector('.sec').textContent = second;
+    }
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+
+</html>
