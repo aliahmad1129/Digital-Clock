@@ -41,8 +41,8 @@
       font-family: "Orbitron", sans-serif;
       font-weight: 300;
       color: rgb(255, 64, 64);
-      font-size: 2.5rem;
-      padding-right: 20px;
+      font-size: 2rem;
+      padding: 10px 20px 10px 0;
       text-align: right;
       word-spacing: 15px;
 
@@ -114,7 +114,7 @@
     @media (max-width: 650px) {
       .clock {
         width: 90%;
-        padding: 20px 0;
+        padding: 20px 0 0 0;
       }
 
       .h-m {
@@ -176,7 +176,11 @@
       let time = hour + ":" + minute;
 
       let day = t.getDate();
-      let month = t.getMonth() + 1;
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      let month = monthNames[t.getMonth()];
       let year = t.getFullYear();
 
       let date = day + "   " + month + "   " + year;
